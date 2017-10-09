@@ -10,7 +10,7 @@ public class Task3 {
         double b = 1;
         double h = 0.04;
         for (double x = a; x <= b; x += h) {
-            System.out.println("x=" + x + "; F(x)=" + f(x) + ";");
+            System.out.printf("x=% f; \t F(x)=% f %n",x,f(x));
         }
     }
 }
