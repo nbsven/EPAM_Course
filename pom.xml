@@ -5,8 +5,8 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.epam.jf</groupId>
-    <artifactId>JavaFundamentals6</artifactId>
+    <groupId>com.abra.ec</groupId>
+    <artifactId>EPAM_Course</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>IntroHomework1</module>
