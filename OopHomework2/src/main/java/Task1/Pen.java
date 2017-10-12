@@ -6,7 +6,6 @@ import lombok.Getter;
 
 import java.awt.*;
 
-
 @Getter
 @AllArgsConstructor
 public class Pen {
@@ -39,4 +38,5 @@ public class Pen {
     protected boolean canEqual(Object other) {
         return other instanceof Pen;
     }
+
 }
