@@ -1,5 +1,10 @@
 package Task2;
 
+import Task1.Pen;
+import Task3.Scissors;
+import Task3.Size;
+
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Workspace {
@@ -30,6 +35,20 @@ public class Workspace {
             result+=stationary.getPrice();
         }
         return result;
+    }
+
+    /**
+     * Return "novice pack" of stationers for giving employee. It contains blue pen,
+     * 20sm ruler and medium scissors.
+     * @param employeeName name of employee
+     * @return <code>Workspace</code> with "novice pack" for employee with name <code>employeeName</code>
+     */
+    public static Workspace getNovicePack(String employeeName){
+        ArrayList<Stationary> stationaries=new ArrayList<>();
+        stationaries.add(new Pen(Color.blue,20));
+        stationaries.add(new Ruler(50,20));
+        stationaries.add(new Scissors(100, Size.MEDIUM));
+        return new Workspace(employeeName,stationaries);
     }
 
     public Workspace addStationary(Stationary stationary){
