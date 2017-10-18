@@ -1,18 +1,19 @@
 package Task1;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import java.awt.*;
+import java.util.Objects;
 
-@Getter
-@AllArgsConstructor
 public class Pen {
     private Color color;
-    private int price;
+    private Integer price;
 
     private Pen() {
+    }
+
+    public Pen(Color color, Integer price) {
+        this.color = color;
+        this.price = price;
     }
 
     public boolean equals(Object o) {
@@ -28,15 +29,16 @@ public class Pen {
     }
 
     public int hashCode() {
-        final int PRIME = 59;
-        int result = 1;
-        final Object $color = this.getColor();
-        result = result * PRIME + ($color == null ? 43 : $color.hashCode());
-        return result;
+        return Objects.hash(color,price);
     }
 
-    protected boolean canEqual(Object other) {
-        return other instanceof Pen;
+    public Color getColor() {
+        return color;
     }
+
+    public Integer getPrice() {
+        return price;
+    }
+
 
 }
