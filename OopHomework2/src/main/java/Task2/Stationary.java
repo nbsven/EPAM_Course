@@ -1,7 +1,11 @@
 package Task2;
 
-public abstract class Stationary {
-    protected Integer price;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Comparator;
+
+public abstract class Stationary{
+    protected Integer price=0;
 
     protected Stationary(){
         price=0;

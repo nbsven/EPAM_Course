@@ -13,7 +13,7 @@ public class Pen extends Stationary {
     private Pen() {
     }
 
-    public Pen(Color color, Integer price) {
+    public Pen(Integer price, Color color) {
         super(price);
         this.color = color;
     }

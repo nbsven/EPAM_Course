@@ -6,6 +6,7 @@ import Task3.Size;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Workspace {
     private String employeeName="";
@@ -45,10 +46,14 @@ public class Workspace {
      */
     public static Workspace getNovicePack(String employeeName){
         ArrayList<Stationary> stationaries=new ArrayList<>();
-        stationaries.add(new Pen(Color.blue,20));
+        stationaries.add(new Pen(20,Color.blue));
         stationaries.add(new Ruler(50,20));
         stationaries.add(new Scissors(100, Size.MEDIUM));
         return new Workspace(employeeName,stationaries);
+    }
+
+    public void sort(Comparator<Stationary> comparator){
+        stationers.sort(comparator);
     }
 
     public Workspace addStationary(Stationary stationary){
