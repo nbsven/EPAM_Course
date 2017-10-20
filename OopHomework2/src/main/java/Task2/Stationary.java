@@ -4,11 +4,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Comparator;
 
-public abstract class Stationary{
-    protected Integer price=0;
+public abstract class Stationary {
+    protected Integer price = 0;
 
-    protected Stationary(){
-        price=0;
+    protected Stationary() {
+        price = 0;
     }
 
     public Stationary(Integer price) {

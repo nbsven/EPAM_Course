@@ -14,9 +14,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class SortedByPriceTest {
     @Test
     void compare() {
-        Workspace workSpace=new Workspace("Nikolai");
+        Workspace workSpace = new Workspace("Nikolai");
         workSpace.addStationary(new Pen(137, Color.blue));
-        workSpace.addStationary(new Ruler(100,20));
+        workSpace.addStationary(new Ruler(100, 20));
         workSpace.addStationary(new Scissors(233, Size.MEDIUM));
 
         workSpace.sort(new SortedByPrice());

@@ -22,7 +22,7 @@ public class Scissors extends Stationary {
         Scissors scissors = (Scissors) o;
 
         if (!price.equals(scissors.price)) return false;
-        if(!size.equals(size)) return false;
+        if (!size.equals(size)) return false;
 
         return true;
     }

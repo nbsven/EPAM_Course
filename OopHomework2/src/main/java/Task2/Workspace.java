@@ -7,12 +7,14 @@ import Task3.Size;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Workspace {
-    private String employeeName="";
-    private ArrayList<Stationary> stationers=new ArrayList<>();
+    private String employeeName = "";
+    private ArrayList<Stationary> stationers = new ArrayList<>();
 
-    private Workspace(){
+    private Workspace() {
 
     }
 
@@ -30,10 +32,10 @@ public class Workspace {
      *
      * @return integer result
      */
-    public Integer calculateTotalPrice(){
-        Integer result=0;
-        for(Stationary stationary:stationers){
-            result+=stationary.getPrice();
+    public Integer calculateTotalPrice() {
+        Integer result = 0;
+        for (Stationary stationary : stationers) {
+            result += stationary.getPrice();
         }
         return result;
     }
@@ -41,28 +43,34 @@ public class Workspace {
     /**
      * Return "novice pack" of stationers for giving employee. It contains blue pen,
      * 20sm ruler and medium scissors.
+     *
      * @param employeeName name of employee
      * @return <code>Workspace</code> with "novice pack" for employee with name <code>employeeName</code>
      */
-    public static Workspace getNovicePack(String employeeName){
-        ArrayList<Stationary> stationaries=new ArrayList<>();
-        stationaries.add(new Pen(20,Color.blue));
-        stationaries.add(new Ruler(50,20));
+    public static Workspace getNovicePack(String employeeName) {
+        ArrayList<Stationary> stationaries = new ArrayList<>();
+        stationaries.add(new Pen(20, Color.blue));
+        stationaries.add(new Ruler(50, 20));
         stationaries.add(new Scissors(100, Size.MEDIUM));
-        return new Workspace(employeeName,stationaries);
+        return new Workspace(employeeName, stationaries);
     }
 
-    public void sort(Comparator<Stationary> comparator){
+    /**
+     * Sorting stationers list using comparator.
+     *
+     * @param comparator comparator order
+     */
+    public void sort(Comparator<Stationary> comparator) {
         stationers.sort(comparator);
     }
 
-    public Workspace addStationary(Stationary stationary){
+    public Workspace addStationary(Stationary stationary) {
         stationers.add(stationary);
         return this;
     }
 
-    public void resetStationers(){
-        stationers=new ArrayList<>();
+    public void resetStationers() {
+        stationers = new ArrayList<>();
     }
 
     public Workspace setStationers(ArrayList<Stationary> stationers) {
