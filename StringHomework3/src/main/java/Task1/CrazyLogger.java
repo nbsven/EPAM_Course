@@ -23,20 +23,20 @@ public class CrazyLogger {
 
     /**
      * Print in {@code System.out} logs, that contains {@code String} message
+     *
      * @param msg message
      */
     public void getLogsWithMessage(String msg) {
         int lastIndex = 0;
-        System.out.println("CrazyLogger.getLogsWithMessage");
         while (stringBuilder.indexOf(msg, lastIndex) != -1) {
 
             int start = stringBuilder.substring(0, stringBuilder.indexOf(msg, lastIndex)).lastIndexOf("\n");
-            start = start == -1 ? 0 : start+1;
+            start = start == -1 ? 0 : start + 1;
 
             int end = stringBuilder.substring(stringBuilder.indexOf(msg, lastIndex)).indexOf("\n");
-            end+=stringBuilder.indexOf(msg, lastIndex);
+            end += stringBuilder.indexOf(msg, lastIndex);
 
-            System.out.println(stringBuilder.substring(start,end));
+            System.out.println(stringBuilder.substring(start, end));
             lastIndex = end + 1;
         }
     }

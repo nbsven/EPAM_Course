@@ -31,7 +31,8 @@ class CrazyLoggerTest {
         logger.log("msg1");
         logger.log("msg2");
         logger.log("msg3");
-        showLogs();
-        logger.getLogsWithMessage("msg3");
+        logger.getLogsWithMessage("msg2");
+        System.out.println("--------------------------------------");
+        logger.getLogsWithMessage("ms");
     }
 }
