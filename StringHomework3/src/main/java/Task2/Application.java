@@ -7,11 +7,11 @@ import java.util.ResourceBundle;
 public class Application {
 
     private ResourceBundle questionsBundle;
-    private ResourceBundle answersBunle;
+    private ResourceBundle answersBundle;
 
     public Application(Locale locale){
         questionsBundle =ResourceBundle.getBundle("questions",locale);
-        answersBunle = ResourceBundle.getBundle("answers", locale);
+        answersBundle = ResourceBundle.getBundle("answers", locale);
     }
 
     public String getQuestion(int key){
@@ -19,7 +19,7 @@ public class Application {
     }
 
     public String getAnswers(int key){
-        return answersBunle.getString(String.valueOf(key));
+        return answersBundle.getString(String.valueOf(key));
     }
 
     public ArrayList<String> getQuestions(){
@@ -32,8 +32,8 @@ public class Application {
 
     public ArrayList<String> getAnswers(){
         ArrayList<String> res = new ArrayList<>();
-        for(String key:answersBunle.keySet()){
-            res.add(answersBunle.getString(key));
+        for(String key: answersBundle.keySet()){
+            res.add(answersBundle.getString(key));
         }
         return res;
     }
