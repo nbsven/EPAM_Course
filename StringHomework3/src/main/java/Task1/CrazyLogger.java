@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Formatter;
 
 public class CrazyLogger {
-    StringBuilder stringBuilder = new StringBuilder();
+    private StringBuilder stringBuilder = new StringBuilder();
 
     public CrazyLogger() {
 
