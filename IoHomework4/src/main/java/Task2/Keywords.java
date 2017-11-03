@@ -1,11 +1,14 @@
-package Task1;
+package Task2;
+
+import Task1.Words;
+import checkers.igj.quals.I;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class Words {
+public class Keywords {
     private static ArrayList<String> keywordsList = new ArrayList<>();
 
     static {
@@ -16,25 +19,22 @@ public class Words {
      * Finds all keywords in .java file associated with dataInputStream
      * and count them.
      *
-     * @param dataInputStream byte input stream of .java file
+     * @param reader buffered reader of .java file
      * @return HashMap containing keywords with number of their using
      * @throws IOException
      */
-    public static HashMap<String, Integer> getKeywords(DataInputStream dataInputStream) throws IOException {
-        byte[] readBytes = dataInputStream.readAllBytes();
-        StringBuilder stringBuilder = new StringBuilder();
-        for (byte b : readBytes) {
-            stringBuilder.append((char) b);
-        }
-
+    public static HashMap<String, Integer> getKeywords(BufferedReader reader) throws IOException {
+        String line;
         HashMap<String, Integer> result = new HashMap<>();
-        for (String s : stringBuilder.toString().split("[\\s;]")) {
-            int index = keywordsList.indexOf(s);
-            if (index == -1) continue;
-            if (result.containsKey(s)) {
-                result.put(s, result.get(s) + 1);
-            } else {
-                result.put(s, 1);
+        while ((line = reader.readLine()) != null) {
+            for (String s : line.split("[\\s;]")) {
+                int index = keywordsList.indexOf(s);
+                if (index == -1) continue;
+                if (result.containsKey(s)) {
+                    result.put(s, result.get(s) + 1);
+                } else {
+                    result.put(s, 1);
+                }
             }
         }
 
@@ -55,4 +55,5 @@ public class Words {
     public static ArrayList<String> getKeywordsList() {
         return new ArrayList<>(keywordsList);
     }
+
 }
