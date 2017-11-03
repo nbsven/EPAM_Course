@@ -12,6 +12,8 @@
         <module>IntroHomework1</module>
         <module>OopHomework2</module>
         <module>StringHomework3</module>
+        <module>IoHomework4</module>
+        <module>ExeptionsHomework</module>
     </modules>
     <packaging>pom</packaging>
 
