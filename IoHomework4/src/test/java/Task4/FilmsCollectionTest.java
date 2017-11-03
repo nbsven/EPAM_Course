@@ -1,7 +1,9 @@
 package Task4;
 
+import org.hamcrest.core.Is;
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FilmsCollectionTest {
@@ -17,5 +19,8 @@ class FilmsCollectionTest {
 
         FilmsCollection filmsCollection1 = new FilmsCollection();
         filmsCollection1.restoreFilmsCollection("firstCollection");
+        System.out.println(filmsCollection1);
+
+        assertThat(filmsCollection, Is.is(filmsCollection1));
     }
 }

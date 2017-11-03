@@ -2,6 +2,7 @@ package Task4;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class FilmsCollection implements Serializable {
 
@@ -27,7 +28,7 @@ public class FilmsCollection implements Serializable {
 
     public void saveFilmsCollection(String file) {
         try (ObjectOutputStream stream = new ObjectOutputStream(
-                new FileOutputStream("src/main/resources/" + file + ".txt"))) {
+                new FileOutputStream("src/main/resources/Task4/" + file + ".txt"))) {
             stream.writeObject(films);
         } catch (Exception e) {
             e.printStackTrace();
@@ -47,5 +48,18 @@ public class FilmsCollection implements Serializable {
         return "FilmsCollection{" +
                 "films=" + films +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FilmsCollection that = (FilmsCollection) o;
+        return Objects.equals(films, that.films);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(films);
     }
 }
