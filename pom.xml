@@ -13,6 +13,7 @@
         <module>OopHomework2</module>
         <module>StringHomework3</module>
         <module>IoHomework4</module>
+        <module>ExceptionsHomework5</module>
     </modules>
     <packaging>pom</packaging>
 
