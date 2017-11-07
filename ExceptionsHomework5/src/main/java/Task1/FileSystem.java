@@ -2,7 +2,7 @@ package Task1;
 
 import Task1.Exceptions.FileOrDirectoryNotExistsException;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -79,11 +79,47 @@ public class FileSystem {
         return list;
     }
 
-    public void createTxtFile(String name){
-        
+    public void createTxtFile(String name) throws FileOrDirectoryNotExistsException, IOException {
+        if (root.equals("")) {
+            throw new FileOrDirectoryNotExistsException();
+        }
+
+        File text = new File(root + selected + name + ".txt");
+        text.createNewFile();
+    }
+
+    public void addToTxtFile(String filename, String text) throws FileOrDirectoryNotExistsException {
+        File file = new File(root + selected + filename + ".txt");
+        if (!file.exists())
+            throw new FileOrDirectoryNotExistsException();
+
+        StringBuilder newText = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line=reader.readLine())!=null){
+                newText.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        newText.append("\n");
+        newText.append(text);
+        try(BufferedWriter writer=new BufferedWriter(new FileWriter(file))){
+            writer.write(newText.toString());
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteTxtFile(String filename) {
+        File file = new File(root + selected + filename + ".txt");
+        if (file.exists())
+            file.delete();
+
     }
 
     public String getPath() {
-        return root+selected;
+        return root + selected;
     }
 }
