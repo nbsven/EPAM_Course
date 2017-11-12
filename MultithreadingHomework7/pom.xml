@@ -9,7 +9,7 @@
         <artifactId>EPAM_Course</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>ExeptionsHomework</artifactId>
+    <artifactId>MultithreadingHomework7</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     

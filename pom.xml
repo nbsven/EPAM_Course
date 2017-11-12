@@ -14,6 +14,7 @@
         <module>StringHomework3</module>
         <module>IoHomework4</module>
         <module>ExceptionsHomework5</module>
+        <module>MultithreadingHomework7</module>
     </modules>
     <packaging>pom</packaging>
 
