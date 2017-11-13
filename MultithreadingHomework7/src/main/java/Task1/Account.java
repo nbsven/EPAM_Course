@@ -23,11 +23,27 @@ public class Account {
         return value;
     }
 
+    public synchronized void increaseValueSync(double value){
+        this.value+=value;
+    }
+
+    public synchronized void reduceValueSync(double value){
+        this.value-=value;
+    }
+
     public void increaseValue(double value){
         this.value+=value;
     }
 
     public void reduceValue(double value){
         this.value-=value;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", value=" + value +
+                '}';
     }
 }
