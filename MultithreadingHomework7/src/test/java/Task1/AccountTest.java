@@ -1,5 +1,6 @@
 package Task1;
 
+import checkers.units.quals.A;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -22,9 +23,18 @@ class AccountTest {
         return res;
     }
 
+    static boolean compareAccounts(ArrayList<Account> accountsOld, ArrayList<Account> accountsNew) {
+        if (accountsNew.size() != accountsOld.size()) return false;
+        for (int i = 0; i < accountsNew.size(); i++) {
+            if (Math.round((accountsNew.get(i).getValue() - accountsOld.get(i).getValue()) * 100) != 0)
+                return false;
+        }
+        return true;
+    }
+
     @Test
     strictfp public void test() {
-        final ArrayList<Account> accounts = new ArrayList<>();
+        ArrayList<Account> accounts = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             accounts.add(new Account(i, 300));
 
@@ -37,8 +47,7 @@ class AccountTest {
             for (int i = 0; i < 1000; i++) {
                 int from = rnd.nextInt(10);
                 int to = rnd.nextInt(10);
-                Double change = (rnd.nextDouble() * 10)*100;
-                change=change.longValue()/100.0;
+                Double change = (rnd.nextDouble() * 10);
                 String line = String.format("%s %s %s%n", from, to, change);
                 accounts.get(from).reduceValue(change);
                 accounts.get(to).increaseValue(change);
@@ -48,34 +57,19 @@ class AccountTest {
             e.printStackTrace();
         }
 
+        System.out.println(volume(accounts));
         System.out.println(accounts);
 
-        ExecutorService executor = Executors.newFixedThreadPool(30);
+        ArrayList<Account> accountsNew = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            accountsNew.add(new Account(i, 300));
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(transactionsFile))) {
-            String line;
-            int i=0;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(i++);
-                final String[] strings = line.split(" ");
-
-                executor.execute(new Runnable() {
-                    @Override
-                    public void run() {
-
-                    }
-                });
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        executor.shutdown();
-        try {
-            executor.awaitTermination(1,TimeUnit.DAYS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println(accounts);
+        new TxHandler(accountsNew).parseTransactions(transactionsFile);
+        System.out.println(volume(accountsNew));
+        System.out.println(accountsNew);
+
+        assertTrue(compareAccounts(accounts, accountsNew));
 
     }
 
