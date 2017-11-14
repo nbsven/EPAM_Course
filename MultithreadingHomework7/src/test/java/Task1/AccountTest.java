@@ -23,7 +23,7 @@ class AccountTest {
     }
 
     @Test
-    public void test() {
+    strictfp public void test() {
         final ArrayList<Account> accounts = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             accounts.add(new Account(i, 300));
@@ -37,7 +37,8 @@ class AccountTest {
             for (int i = 0; i < 1000; i++) {
                 int from = rnd.nextInt(10);
                 int to = rnd.nextInt(10);
-                double change = rnd.nextDouble() * 10;
+                Double change = (rnd.nextDouble() * 10)*100;
+                change=change.longValue()/100.0;
                 String line = String.format("%s %s %s%n", from, to, change);
                 accounts.get(from).reduceValue(change);
                 accounts.get(to).increaseValue(change);
@@ -61,14 +62,7 @@ class AccountTest {
                 executor.execute(new Runnable() {
                     @Override
                     public void run() {
-                        accounts.get(Integer.parseInt(strings[0])).reduceValue(Double.parseDouble(strings[2]));
-                        accounts.get(Integer.parseInt(strings[1])).increaseValue(Double.parseDouble(strings[2]));
 
-                            try {
-                                Thread.sleep(200);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
                     }
                 });
             }
