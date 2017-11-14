@@ -70,6 +70,7 @@ class AccountTest {
         System.out.println(accountsNew);
 
         assertTrue(compareAccounts(accounts, accountsNew));
+        transactionsFile.delete();
 
     }
 

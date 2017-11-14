@@ -38,12 +38,6 @@ public class TxHandler {
             accounts.get(Integer.parseInt(strings[0])).reduceValue(Double.parseDouble(strings[2]));
             accounts.get(Integer.parseInt(strings[1])).increaseValue(Double.parseDouble(strings[2]));
 
-//            try {
-//                Thread.sleep(200);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-
             freeThreads.offer(1);
         }
     }
