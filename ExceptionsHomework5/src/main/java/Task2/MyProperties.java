@@ -25,7 +25,7 @@ public class MyProperties extends HashMap<String, String> {
                 resultProperties.putIfAbsent(key, value);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("File not found");
+            System.out.println("File not found "+ e.getMessage());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
