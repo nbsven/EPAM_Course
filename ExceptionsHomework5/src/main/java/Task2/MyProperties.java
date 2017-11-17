@@ -1,6 +1,10 @@
 package Task2;
 
-import java.io.*;
+;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.HashMap;
 
 public class MyProperties extends HashMap<String, String> {
@@ -37,14 +41,14 @@ public class MyProperties extends HashMap<String, String> {
         try {
             return getString(key);
         } catch (KeyNotFoundException e) {
-            System.out.println("Key not found");
+            System.out.printf("Key not found; key:%s%n",e.getMessage());
         }
         return null;
     }
 
     private String getString(String key) throws KeyNotFoundException {
         if (!this.containsKey(key))
-            throw new KeyNotFoundException();
+            throw new KeyNotFoundException(key);
         return super.get(key);
     }
 }
